@@ -1,0 +1,2853 @@
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" as="image" href="https://assets.ls-assets.com/uploads/19754c85-8b8e-4156-9be3-36e852ea5497/ffa50f09-cb15-47d7-b51a-d4888958ce6f.png?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2267268610.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2259318138.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2196158127.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2256303189.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2199111472.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2213571973.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2249306331.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2233277944.jpg?w=768"><link rel="preload" as="image" href="https://assets.ls-assets.com/provider/istock/2175868193.jpg?w=768"><title>חשמלאי - שירות חשמל מקצועי ואמין לכל בית ועסק</title><meta name="description" content="שירות חשמל מקצועי לבית ולעסק — זמינים 24/7 ומגיעים אליך תוך 30 דקות. תיקון תקלות, התקנות, לוחות חשמל ומערכות סולאריות."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@700;900&amp;display=swap">
+<style>
+.ls-preview-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+.ls-picker-overlay {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2147483646;
+  border: 2px solid #4f46e5;
+  background: rgba(79, 70, 229, 0.12);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  border-radius: 2px;
+  transition: top 60ms linear, left 60ms linear, width 60ms linear, height 60ms linear;
+}
+.ls-picker-hint {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2147483647;
+  bottom: 16px;
+  right: 16px;
+  background: #111827;
+  color: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  user-select: none;
+}
+</style>
+<script>
+(function() {
+  // Detect Vite's SSR-transform-error response page once; reused by
+  // multiple feature gates below. We intentionally inject our script into
+  // these pages so the parent's "Have AI fix this" banner can appear, but
+  // some features (console capture, HMR reload) interact badly with the
+  // error template and need to be skipped.
+  var __viteSsrErrorSig = false;
+  try {
+    var __scripts = document.querySelectorAll('script[type="module"]');
+    for (var __i = 0; __i < __scripts.length; __i++) {
+      var __s = __scripts[__i].textContent || '';
+      if (__s.indexOf('Transform failed') !== -1
+          || __s.indexOf('[PARSE_ERROR]') !== -1
+          || __s.indexOf('[vite] Internal Server Error') !== -1) {
+        __viteSsrErrorSig = true;
+        break;
+      }
+    }
+  } catch (__e) {}
+
+  // Show preview banner if not in iframe
+  if (window.self === window.top) {
+    function ensureBanner() {
+      if (!document.body) return;
+      if (document.querySelector('.ls-preview-banner')) return;
+      var banner = document.createElement('div');
+      banner.className = 'ls-preview-banner';
+      banner.textContent = 'This is a preview. Publish your website to make it live on your own domain.';
+      document.body.appendChild(banner);
+    }
+    if (document.body) ensureBanner();
+    document.addEventListener('DOMContentLoaded', ensureBanner);
+    // Re-add banner if React/Vite removes it
+    new MutationObserver(ensureBanner).observe(document.documentElement, { childList: true, subtree: true });
+  }
+  // Console log capture: continuously tail to /__console so the sandbox-side
+  // .browser-log file approximates a live tail rather than a flush-on-trigger
+  // snapshot. The sandbox agent's system prompt hints .browser-log as a read
+  // source for diagnosing user-reported errors; if the file is stale by tens
+  // of seconds, "tail .browser-log" returns "not available yet" and the model
+  // gives up. Three drain triggers make the file freshness <= ~1s of console
+  // activity:
+  //   1. Debounced timer ~1000ms after the most recent console.* call
+  //   2. visibilitychange -> hidden (tab switched away; user is not watching)
+  //   3. beforeunload (page closing; sendBeacon survives unload, fetch may not)
+  // The legacy postMessage 'flush-console-logs' handler is kept intact for
+  // backwards compatibility with the legacy CF agent's getBrowserLogs tool
+  // during the parity-flag rollout.
+  //
+  // Note: .browser-log lives in /home/user/ (sibling of WEBSITE_DIR), so
+  // writes don't trigger Vite's file watcher / full-reload. The SSR-error
+  // skip below is now belt-and-suspenders — there are no useful runtime
+  // logs from Vite's static error template anyway, so suppressing capture
+  // there is still cheap insurance.
+  if (!__viteSsrErrorSig) (function() {
+    var buffer = [];
+    var flushing = false;
+    var debounceTimer = null;
+    var DEBOUNCE_MS = 1000;
+    var levels = ['log', 'warn', 'error', 'info'];
+    var originals = {};
+    levels.forEach(function(level) {
+      originals[level] = console[level];
+      console[level] = function() {
+        try {
+          originals[level].apply(console, arguments);
+          var msg = Array.prototype.slice.call(arguments).map(function(a) {
+            try { return typeof a === 'object' ? JSON.stringify(a) : String(a); }
+            catch(e) { return String(a); }
+          }).join(' ');
+          var ts = new Date().toISOString();
+          buffer.push('[' + ts + '] [' + level.toUpperCase() + '] ' + msg);
+          if (buffer.length > 200) buffer = buffer.slice(-200);
+          // Schedule a debounced flush. Each new console call resets the
+          // timer, so a burst of N logs in <DEBOUNCE_MS coalesces into a
+          // single POST after the burst settles.
+          if (debounceTimer) clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(flush, DEBOUNCE_MS);
+        } catch(e) {}
+      };
+    });
+    function flush() {
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      if (!buffer.length || flushing) return;
+      flushing = true;
+      var batch = buffer.splice(0, buffer.length);
+      try {
+        fetch('/__console', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ logs: batch })
+        }).catch(function(){}).finally(function(){ flushing = false; });
+      } catch(e) { flushing = false; }
+    }
+    function flushSync() {
+      // Used during page unload — fetch() is unreliable when the document is
+      // tearing down, but sendBeacon is designed for exactly this case. The
+      // browser queues the POST and lets it finish even after the page dies.
+      if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+      if (!buffer.length) return;
+      var batch = buffer.splice(0, buffer.length);
+      try {
+        if (navigator && typeof navigator.sendBeacon === 'function') {
+          var blob = new Blob([JSON.stringify({ logs: batch })], { type: 'application/json' });
+          navigator.sendBeacon('/__console', blob);
+        } else {
+          // Older browser fallback: fire-and-forget fetch with keepalive.
+          fetch('/__console', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ logs: batch }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch(e) {}
+    }
+    window.addEventListener('message', function(event) {
+      if (event.data && event.data.type === 'flush-console-logs') flush();
+    });
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') flush();
+    });
+    window.addEventListener('beforeunload', flushSync);
+    window.addEventListener('pagehide', flushSync);
+  })();
+
+  // Iframe navigation tracking
+  if (window.parent !== window) {
+    function notifyNavigation() {
+      window.parent.postMessage({
+        type: 'navigation',
+        path: window.location.pathname + window.location.search + window.location.hash
+      }, '*');
+    }
+    notifyNavigation();
+    window.addEventListener('popstate', notifyNavigation);
+    window.addEventListener('hashchange', notifyNavigation);
+    var originalPushState = history.pushState;
+    var originalReplaceState = history.replaceState;
+    history.pushState = function() {
+      originalPushState.apply(this, arguments);
+      notifyNavigation();
+    };
+    history.replaceState = function() {
+      originalReplaceState.apply(this, arguments);
+      notifyNavigation();
+    };
+    window.addEventListener('message', function(event) {
+      if (event.data && (event.data.type === 'navigate' || event.data.type === 'navigate-to-path')) {
+        var path = event.data.path;
+        if (path) {
+          window.dispatchEvent(new CustomEvent('landingsite:navigate', { detail: { path: path } }));
+          if (window.location.pathname + window.location.search + window.location.hash !== path) {
+            // Use originalReplaceState to update the URL without triggering our override's
+            // notifyNavigation (the popstate event below will handle the single notification).
+            // replaceState avoids adding a duplicate entry to the iframe's history stack.
+            originalReplaceState.call(history, { landingsite: true }, '', path);
+            // Dispatch popstate so React Router detects the location change and re-renders.
+            // pushState/replaceState alone do NOT trigger popstate, which is what React Router listens for.
+            window.dispatchEvent(new PopStateEvent('popstate', { state: { landingsite: true } }));
+          }
+        }
+      }
+    });
+  }
+
+  // Element picker: inert by default. Activates when the parent posts
+  // 'enter-select' from an allowlisted origin. Tears down on 'cancel-select',
+  // on Escape inside the iframe, or after a successful pick. No listeners on
+  // document, no DOM rendered, no cursor change while inactive.
+  if (window.parent !== window) {
+    var PICKER_ALLOWED_PARENT_ORIGINS = ["https://app.landingsite.ai"];
+    // Last-resort sanity cap before postMessage. The parent owns the
+    // authoritative size limits (200KB outerHTML, 220KB total per Unit 5);
+    // this only catches pathological payloads to keep the channel sane.
+    var PICKER_MAX_MESSAGE_BYTES = 500 * 1024;
+
+    var pickActive = false;
+    var pickerOverlay = null;
+    var pickerHint = null;
+    var pickerLearnedParentOrigin = null;
+
+    function pickerCapByBytes(text, maxBytes) {
+      var s = String(text == null ? '' : text).trim();
+      if (!s) return '';
+      try {
+        var enc = new TextEncoder();
+        var bytes = enc.encode(s);
+        if (bytes.length <= maxBytes) return s;
+        // Truncate by bytes, then decode with fatal=false so we drop any
+        // partial multibyte sequence at the end safely.
+        var truncated = bytes.slice(0, maxBytes);
+        try {
+          return new TextDecoder('utf-8', { fatal: false }).decode(truncated);
+        } catch (e) {
+          return s.slice(0, maxBytes);
+        }
+      } catch (e) {
+        return s.slice(0, maxBytes);
+      }
+    }
+
+    // Extract a human-readable text preview from a picked element.
+    //
+    // el.textContent concatenates source text with no separators, which
+    // turns adjacent inline siblings into a runon (e.g. a list of city
+    // span elements with no whitespace between them renders as
+    // "BoulderLouisvilleLafayette..."). Strip tags with a space substitute
+    // and collapse runs of whitespace so adjacent siblings get a separator.
+    // Same logic the parent uses in extractPickerSummary so the composer
+    // chip and the sent-message indicator agree.
+    function pickerSmartText(el) {
+      var html;
+      try { html = el.outerHTML || ''; } catch (err) { return ''; }
+      return html
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function pickerEnsureOverlay() {
+      if (pickerOverlay && pickerHint) return;
+      pickerOverlay = document.createElement('div');
+      pickerOverlay.className = 'ls-picker-overlay';
+      pickerOverlay.style.top = '-9999px';
+      pickerOverlay.style.left = '-9999px';
+      pickerOverlay.style.width = '0px';
+      pickerOverlay.style.height = '0px';
+      pickerHint = document.createElement('div');
+      pickerHint.className = 'ls-picker-hint';
+      pickerHint.textContent = 'Click an element \u00b7 Esc to cancel';
+      var host = document.body || document.documentElement;
+      host.appendChild(pickerOverlay);
+      host.appendChild(pickerHint);
+    }
+
+    function pickerPositionOverlay(target) {
+      if (!pickerOverlay || !target || !target.getBoundingClientRect) return;
+      var r = target.getBoundingClientRect();
+      // Hide overlay for zero-area or off-screen targets (e.g. <html>, <body>
+      // when elementFromPoint returns them at the edge).
+      if (r.width <= 0 || r.height <= 0) {
+        pickerOverlay.style.top = '-9999px';
+        pickerOverlay.style.left = '-9999px';
+        pickerOverlay.style.width = '0px';
+        pickerOverlay.style.height = '0px';
+        return;
+      }
+      pickerOverlay.style.top = r.top + 'px';
+      pickerOverlay.style.left = r.left + 'px';
+      pickerOverlay.style.width = r.width + 'px';
+      pickerOverlay.style.height = r.height + 'px';
+    }
+
+    function pickerOnMouseMove(e) {
+      // Overlay has pointer-events: none, so elementFromPoint returns the
+      // real underlying element rather than the overlay.
+      var target = document.elementFromPoint(e.clientX, e.clientY);
+      if (!target) return;
+      pickerPositionOverlay(target);
+    }
+
+    function pickerOnClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      // Always use event.target — overlay is pointer-events: none so this is
+      // the actual element under the cursor, not a stale hover cache.
+      var el = e.target;
+      if (!el || !el.tagName) {
+        pickerDeactivate();
+        return;
+      }
+      var tag = String(el.tagName).toLowerCase().slice(0, 64);
+      var outerHTML = '';
+      try { outerHTML = el.outerHTML || ''; } catch (err) { outerHTML = ''; }
+      var textPreview = pickerCapByBytes(pickerSmartText(el), 90);
+      var payload = {
+        type: 'selected',
+        outerHTML: outerHTML,
+        tag: tag,
+        textPreview: textPreview,
+        path: window.location.pathname,
+      };
+      // Sanity cap. Parent enforces the authoritative byte limits.
+      try {
+        var serializedSize = (outerHTML.length || 0) + (textPreview.length || 0) + 256;
+        if (serializedSize > PICKER_MAX_MESSAGE_BYTES) {
+          if (typeof console !== 'undefined' && console.warn) {
+            console.warn('[ls-picker] dropping pick: serialized message exceeds ~500KB');
+          }
+          pickerDeactivate();
+          return;
+        }
+      } catch (err) {}
+      var targetOrigin = pickerLearnedParentOrigin;
+      if (targetOrigin) {
+        try { window.parent.postMessage(payload, targetOrigin); } catch (err) {}
+      }
+      pickerDeactivate();
+    }
+
+    function pickerOnKeyDown(e) {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        e.preventDefault();
+        e.stopPropagation();
+        var targetOrigin = pickerLearnedParentOrigin;
+        if (targetOrigin) {
+          try {
+            window.parent.postMessage({ type: 'cancel-select-request' }, targetOrigin);
+          } catch (err) {}
+        }
+        pickerDeactivate();
+      }
+    }
+
+    function pickerActivate() {
+      if (pickActive) return;
+      pickActive = true;
+      pickerEnsureOverlay();
+      try { document.documentElement.style.cursor = 'crosshair'; } catch (e) {}
+      // Capture phase + non-passive so we can preventDefault on click and
+      // keep customer click handlers from running on the picked element.
+      document.addEventListener('mousemove', pickerOnMouseMove, true);
+      document.addEventListener('click', pickerOnClick, { capture: true, passive: false });
+      document.addEventListener('keydown', pickerOnKeyDown, true);
+    }
+
+    function pickerDeactivate() {
+      if (!pickActive) {
+        // Still clean up any orphaned DOM (e.g. cancel-select arriving while
+        // inactive after a previous teardown left elements somehow).
+        if (pickerOverlay && pickerOverlay.parentNode) pickerOverlay.parentNode.removeChild(pickerOverlay);
+        if (pickerHint && pickerHint.parentNode) pickerHint.parentNode.removeChild(pickerHint);
+        pickerOverlay = null;
+        pickerHint = null;
+        return;
+      }
+      pickActive = false;
+      document.removeEventListener('mousemove', pickerOnMouseMove, true);
+      document.removeEventListener('click', pickerOnClick, true);
+      document.removeEventListener('keydown', pickerOnKeyDown, true);
+      try { document.documentElement.style.cursor = ''; } catch (e) {}
+      if (pickerOverlay && pickerOverlay.parentNode) pickerOverlay.parentNode.removeChild(pickerOverlay);
+      if (pickerHint && pickerHint.parentNode) pickerHint.parentNode.removeChild(pickerHint);
+      pickerOverlay = null;
+      pickerHint = null;
+    }
+
+    window.addEventListener('message', function(event) {
+      var data = event && event.data;
+      if (!data || typeof data !== 'object') return;
+      var type = data.type;
+      if (type !== 'selector-probe' && type !== 'enter-select' && type !== 'cancel-select') {
+        return;
+      }
+      // Strict origin validation for picker messages. Existing legacy
+      // messages in this script use '*' / no origin check; picker is
+      // intentionally locked down per R13.
+      if (PICKER_ALLOWED_PARENT_ORIGINS.indexOf(event.origin) === -1) return;
+
+      if (type === 'selector-probe') {
+        // Parent-initiated readiness probe. Record the origin we're talking
+        // to and reply directly to the source frame so we never broadcast.
+        pickerLearnedParentOrigin = event.origin;
+        if (event.source && event.source.postMessage) {
+          try {
+            event.source.postMessage({ type: 'selector-ready' }, event.origin);
+          } catch (e) {}
+        }
+        return;
+      }
+      if (type === 'enter-select') {
+        pickerLearnedParentOrigin = event.origin;
+        // Ack BEFORE activation so the parent's 500ms ack timer measures
+        // iframe responsiveness, not user click speed. Idempotent on
+        // already-active: ack again so a duplicate enter-select still
+        // satisfies the parent's timer.
+        try {
+          event.source.postMessage({ type: 'enter-select-ack' }, event.origin);
+        } catch (e) {}
+        if (pickActive) return;
+        pickerActivate();
+        return;
+      }
+      if (type === 'cancel-select') {
+        // Idempotent: inactive cancel is a no-op (other than orphan cleanup).
+        pickerDeactivate();
+        return;
+      }
+    });
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Vite HMR error bridge
+    //
+    // Vite renders a <vite-error-overlay> custom element inside this iframe
+    // whenever a parse/transform error happens in the user's source code.
+    // The overlay is visually disjoint from the parent chat composer, so a
+    // non-technical user can't easily connect "ugly red box in the preview"
+    // to "type into the chat to fix it".
+    //
+    // Watch for the overlay (added/removed) and forward a sanitized summary
+    // to the parent so the chat UI can render a clear "Have AI fix this"
+    // banner right above the composer. Reuses pickerLearnedParentOrigin so
+    // we never broadcast source-code frames to '*' — the parent always
+    // probes for the picker on iframe load (even when the picker is hidden),
+    // so this origin is normally set within ms of mount.
+    // ─────────────────────────────────────────────────────────────────────
+    (function() {
+      var VITE_ERROR_TAG = 'VITE-ERROR-OVERLAY';
+      var VITE_ERROR_CAPS = {
+        message: 1024,
+        file: 1024,
+        frame: 4 * 1024,
+        stack: 8 * 1024,
+        path: 512,
+      };
+      var lastSentSignature = '';
+      var scanScheduled = false;
+
+      function getOverlayPart(root, selector, max) {
+        if (!root) return '';
+        var el;
+        try { el = root.querySelector(selector); } catch (e) { return ''; }
+        if (!el) return '';
+        var raw = String(el.textContent == null ? '' : el.textContent).trim();
+        if (raw.length > max) raw = raw.slice(0, max);
+        return raw;
+      }
+
+      function postWithLearnedOrigin(payload, attemptsLeft) {
+        // pickerLearnedParentOrigin is set by the picker probe handshake
+        // (event.origin from selector-probe). The parent always probes on
+        // iframe load, so this is normally set within milliseconds. If we
+        // catch the overlay before the probe lands, retry briefly rather
+        // than dropping the signal — and never fall back to '*' because the
+        // payload contains source-code frames.
+        if (pickerLearnedParentOrigin) {
+          try {
+            window.parent.postMessage(payload, pickerLearnedParentOrigin);
+          } catch (e) {}
+          return;
+        }
+        if (attemptsLeft <= 0) return;
+        setTimeout(function() {
+          postWithLearnedOrigin(payload, attemptsLeft - 1);
+        }, 100);
+      }
+
+      function findOverlay() {
+        try {
+          return document.querySelector(VITE_ERROR_TAG.toLowerCase());
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // React Router runtime error boundary path. When a component throws
+      // during SSR rendering (e.g. "window is not defined" inside a
+      // component body that touches window without a useEffect guard),
+      // Vite's transform succeeds but the render throws — so no
+      // <vite-error-overlay> mounts, and the body has none of the Vite
+      // transform-error signatures. React Router catches the throw and
+      // renders its default ErrorBoundary:
+      //   <main>
+      //     <h1>Oops!</h1>
+      //     <p>{error.message}</p>
+      //     <pre><code>{error.stack}</code></pre>
+      //   </main>
+      // Match on that DOM shape and pull the project-relative file path
+      // out of the first stack frame ("at X (/home/user/website/..:N:N)").
+      function detectReactRouterErrorPage() {
+        try {
+          var h1 = document.querySelector('main h1');
+          if (!h1 || (h1.textContent || '').trim() !== 'Oops!') return null;
+          var codeEl = document.querySelector('main pre code');
+          if (!codeEl) return null;
+          var stack = String(codeEl.textContent == null ? '' : codeEl.textContent).trim();
+          if (!stack) return null;
+          // Stack-shape sanity check: real V8 stacks have "at X (path:N:N)"
+          // frames. Rejects false positives where a user's site happens to
+          // have a similar DOM shape.
+          if (!/\n\s*at\s+[^\n]+\(/.test(stack)) return null;
+          var msgEl = document.querySelector('main p');
+          var message = String((msgEl && msgEl.textContent) || '').trim();
+          if (!message) {
+            var firstLine = stack.split('\n')[0] || '';
+            var colonIdx = firstLine.indexOf(':');
+            message = (colonIdx >= 0 ? firstLine.slice(colonIdx + 1) : firstLine).trim();
+          }
+          // "at Header (/home/user/website/app/components/Header.tsx:140:14)"
+          // Capture the project-relative path + line:col.
+          var fileMatch = stack.match(/\/home\/user\/website\/([^\s:)]+):(\d+):(\d+)/);
+          var file = '';
+          if (fileMatch) {
+            file = fileMatch[1] + ':' + fileMatch[2] + ':' + fileMatch[3];
+          }
+          return {
+            type: 'vite-error',
+            message: message.slice(0, VITE_ERROR_CAPS.message),
+            file: file.slice(0, VITE_ERROR_CAPS.file),
+            frame: '',
+            stack: stack.slice(0, VITE_ERROR_CAPS.stack),
+            path: String(window.location.pathname || '').slice(0, VITE_ERROR_CAPS.path),
+          };
+        } catch (e) {
+          return null;
+        }
+      }
+
+      // Plaintext SSR error path. When Vite's SSR transform fails, React
+      // Router (and similar Vite SSR setups) returns a 500 HTTP response
+      // whose body IS the error — "[vite] Internal Server Error",
+      // "Transform failed", "[PARSE_ERROR]" — rendered as plain HTML, NOT
+      // as a <vite-error-overlay> custom element. The HMR client never
+      // mounts on this page, so the overlay observer alone misses it.
+      function detectViteSsrErrorPage() {
+        var text = '';
+        try {
+          text = (document.body && document.body.innerText) || '';
+        } catch (e) {
+          return null;
+        }
+        if (!text) return null;
+        var hasSignature = (
+          text.indexOf('[vite] Internal Server Error') !== -1 ||
+          text.indexOf('Transform failed') !== -1 ||
+          text.indexOf('[PARSE_ERROR]') !== -1
+        );
+        if (!hasSignature) return null;
+        // Box-drawing line ╭─[ app/routes/_index.tsx:33:18 ] → file path.
+        // Escapes are doubled because this whole script is a template literal.
+        var fileMatch = text.match(/╭─\[\s*([^\s\]]+)\s*\]/);
+        // First "Error: <message>" line → human-readable summary.
+        var errMatch = text.match(/Error:\s*([^\n]+)/);
+        return {
+          type: 'vite-error',
+          message: (errMatch ? errMatch[1].trim() : 'Build error in your website code')
+            .slice(0, VITE_ERROR_CAPS.message),
+          file: (fileMatch ? fileMatch[1].trim() : '').slice(0, VITE_ERROR_CAPS.file),
+          frame: text.slice(0, VITE_ERROR_CAPS.frame),
+          stack: '',
+          path: String(window.location.pathname || '').slice(0, VITE_ERROR_CAPS.path),
+        };
+      }
+
+      // Auto-recovery poll for the two "stuck page" error types (Vite SSR
+      // transform error, React Router runtime ErrorBoundary). Neither
+      // ships Vite's HMR client, so even after the underlying file is
+      // fixed the iframe sits on a stale error response. Re-fetch the
+      // current URL on a bounded backoff; reload when the response body
+      // no longer carries an error signature. We deliberately do NOT
+      // start the poll for the <vite-error-overlay> case — Vite's own
+      // HMR client clears that overlay when the fix arrives, and a
+      // reload there would stomp the user's in-page state.
+      //
+      // All polling code is best-effort and wrapped in try/catch so a
+      // bug in this block can never break the rest of the bridge.
+      var errorPollState = null;
+
+      function pageStillHasError(html) {
+        if (!html) return false;
+        if (html.indexOf('[vite] Internal Server Error') !== -1) return true;
+        if (html.indexOf('Transform failed') !== -1) return true;
+        if (html.indexOf('[PARSE_ERROR]') !== -1) return true;
+        // React Router runtime ErrorBoundary signature: the "Oops!" h1
+        // co-occurring with "react-dom-server" in the streamed stack.
+        // Both strings on their own are too generic; together they
+        // only ever co-occur on the RR runtime error page.
+        if (html.indexOf('Oops!') !== -1 && html.indexOf('react-dom-server') !== -1) return true;
+        return false;
+      }
+
+      function startErrorPoll() {
+        try {
+          if (errorPollState) return;
+          var state = {
+            startTime: Date.now(),
+            nextInterval: 1000,
+            timer: null,
+            inFlight: false,
+            stopped: false,
+          };
+          var MAX_DURATION_MS = 5 * 60 * 1000;
+          var MAX_INTERVAL_MS = 15 * 1000;
+          var BACKOFF = 1.5;
+
+          function stop() {
+            try {
+              state.stopped = true;
+              if (state.timer) { clearTimeout(state.timer); state.timer = null; }
+            } catch (e) {}
+            errorPollState = null;
+          }
+
+          function schedule(overrideMs) {
+            try {
+              if (state.stopped) return;
+              var ms = (typeof overrideMs === 'number') ? overrideMs : state.nextInterval;
+              state.timer = setTimeout(tick, ms);
+              if (typeof overrideMs !== 'number') {
+                state.nextInterval = Math.min(MAX_INTERVAL_MS, Math.ceil(state.nextInterval * BACKOFF));
+              }
+            } catch (e) {}
+          }
+
+          function tick() {
+            try {
+              state.timer = null;
+              if (state.stopped) return;
+              if (Date.now() - state.startTime > MAX_DURATION_MS) { stop(); return; }
+              // Wait until the tab is visible again. Fallback timer in case
+              // the visibilitychange handler is missed.
+              if (document.hidden) { schedule(MAX_INTERVAL_MS); return; }
+              if (state.inFlight) { schedule(); return; }
+              state.inFlight = true;
+              fetch(window.location.href, { cache: 'no-store', credentials: 'same-origin' })
+                .then(function(res) { return res.text(); })
+                .then(function(text) {
+                  state.inFlight = false;
+                  if (state.stopped) return;
+                  if (!pageStillHasError(text)) {
+                    stop();
+                    try { window.location.reload(); } catch (e) {}
+                    return;
+                  }
+                  schedule();
+                })
+                .catch(function() {
+                  state.inFlight = false;
+                  schedule();
+                });
+            } catch (e) {
+              state.inFlight = false;
+              schedule();
+            }
+          }
+
+          errorPollState = {
+            stop: stop,
+            kick: function() {
+              try {
+                if (state.timer) { clearTimeout(state.timer); state.timer = null; }
+                tick();
+              } catch (e) {}
+            },
+          };
+          schedule();
+        } catch (e) {}
+      }
+
+      function stopErrorPoll() {
+        try {
+          if (errorPollState) errorPollState.stop();
+        } catch (e) {}
+      }
+
+      document.addEventListener('visibilitychange', function() {
+        try {
+          if (!document.hidden && errorPollState) errorPollState.kick();
+        } catch (e) {}
+      });
+
+      function scanAndSend() {
+        var overlay = findOverlay();
+        if (overlay) {
+          var root = null;
+          try { root = overlay.shadowRoot; } catch (e) { root = null; }
+          if (!root) return;
+          var payload = {
+            type: 'vite-error',
+            message: getOverlayPart(root, '.message-body', VITE_ERROR_CAPS.message)
+              || getOverlayPart(root, '.message', VITE_ERROR_CAPS.message),
+            file: getOverlayPart(root, '.file', VITE_ERROR_CAPS.file),
+            frame: getOverlayPart(root, '.frame', VITE_ERROR_CAPS.frame),
+            stack: getOverlayPart(root, '.stack', VITE_ERROR_CAPS.stack),
+            path: String(window.location.pathname || '').slice(0, VITE_ERROR_CAPS.path),
+          };
+          // Overlay can mount before its shadow DOM is populated; the
+          // observer fires again on the populated state, so drop empties.
+          if (!payload.message && !payload.file && !payload.frame) return;
+          // Dedup: identical errors fire on every HMR ping. Send once per
+          // signature; a different error (or cleared+reappeared) gets through.
+          var sig = payload.message + '|' + payload.file + '|' + payload.frame;
+          if (sig === lastSentSignature) return;
+          lastSentSignature = sig;
+          postWithLearnedOrigin(payload, 10);
+          return;
+        }
+
+        // No overlay — check for the plaintext SSR error response page.
+        var ssrError = detectViteSsrErrorPage();
+        if (ssrError) {
+          var ssrSig = ssrError.message + '|' + ssrError.file;
+          if (ssrSig === lastSentSignature) return;
+          lastSentSignature = ssrSig;
+          postWithLearnedOrigin(ssrError, 10);
+          startErrorPoll();
+          return;
+        }
+
+        // …or the React Router runtime error boundary page (component
+        // threw during SSR; Vite transform succeeded so neither of the
+        // above paths fires).
+        var rrError = detectReactRouterErrorPage();
+        if (rrError) {
+          var rrSig = rrError.message + '|' + rrError.file;
+          if (rrSig === lastSentSignature) return;
+          lastSentSignature = rrSig;
+          postWithLearnedOrigin(rrError, 10);
+          startErrorPoll();
+          return;
+        }
+
+        if (!lastSentSignature) return;
+        lastSentSignature = '';
+        postWithLearnedOrigin({ type: 'vite-error-cleared' }, 10);
+        stopErrorPoll();
+      }
+
+      function scheduleScan() {
+        if (scanScheduled) return;
+        scanScheduled = true;
+        setTimeout(function() {
+          scanScheduled = false;
+          scanAndSend();
+        }, 50);
+      }
+
+      var viteErrorObserver = new MutationObserver(function(muts) {
+        for (var i = 0; i < muts.length; i++) {
+          var m = muts[i];
+          for (var j = 0; j < m.addedNodes.length; j++) {
+            var n = m.addedNodes[j];
+            if (n && n.nodeType === 1 && n.tagName === VITE_ERROR_TAG) {
+              scheduleScan();
+            }
+          }
+          for (var k = 0; k < m.removedNodes.length; k++) {
+            var r = m.removedNodes[k];
+            if (r && r.nodeType === 1 && r.tagName === VITE_ERROR_TAG) {
+              scheduleScan();
+            }
+          }
+        }
+      });
+      viteErrorObserver.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+      });
+
+      // Catch the case where the error is present at script injection time:
+      //  - <vite-error-overlay> already mounted (HMR overlay path), OR
+      //  - body innerText is the plaintext SSR error response page.
+      // Our script runs from <head> before body is parsed, so the SSR-page
+      // path needs to wait until the body content is available. The
+      // MutationObserver also won't help here because no <vite-error-overlay>
+      // is added — the body itself IS the error.
+      function initialScan() {
+        if (findOverlay() || detectViteSsrErrorPage() || detectReactRouterErrorPage()) {
+          scheduleScan();
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialScan);
+      } else {
+        initialScan();
+      }
+    })();
+  }
+  
+})();
+</script><style type="text/css" data-vite-dev-id="/home/user/website/app/styles/globals.css">/*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-amber-100: oklch(96.2% 0.059 95.617);
+    --color-amber-600: oklch(66.6% 0.179 58.318);
+    --color-green-500: oklch(72.3% 0.219 149.579);
+    --color-cyan-400: oklch(78.9% 0.154 211.53);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-800: oklch(42.4% 0.199 265.638);
+    --color-violet-500: oklch(60.6% 0.25 292.717);
+    --color-purple-100: oklch(94.6% 0.033 307.174);
+    --color-purple-500: oklch(62.7% 0.265 303.9);
+    --color-purple-700: oklch(49.6% 0.265 301.924);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
+    --color-slate-800: oklch(27.9% 0.041 260.031);
+    --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-gray-100: oklch(96.7% 0.003 264.542);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-gray-900: oklch(21% 0.034 264.665);
+    --color-black: #000;
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-md: 28rem;
+    --container-3xl: 48rem;
+    --container-4xl: 56rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
+    --text-6xl: 3.75rem;
+    --text-6xl--line-height: 1;
+    --text-8xl: 6rem;
+    --text-8xl--line-height: 1;
+    --text-9xl: 8rem;
+    --text-9xl--line-height: 1;
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    --tracking-wide: 0.025em;
+    --leading-relaxed: 1.625;
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: 0.75rem;
+    --animate-spin: spin 1s linear infinite;
+    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-bounce: bounce 1s infinite;
+    --blur-sm: 8px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .visible {
+    visibility: visible;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .relative {
+    position: relative;
+  }
+  .static {
+    position: static;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
+  .inset-2 {
+    inset: calc(var(--spacing) * 2);
+  }
+  .inset-4 {
+    inset: calc(var(--spacing) * 4);
+  }
+  .start {
+    inset-inline-start: var(--spacing);
+  }
+  .end {
+    inset-inline-end: var(--spacing);
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+  .top-1\/2 {
+    top: calc(1 / 2 * 100%);
+  }
+  .top-1\/4 {
+    top: calc(1 / 4 * 100%);
+  }
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
+  .top-10 {
+    top: calc(var(--spacing) * 10);
+  }
+  .top-16 {
+    top: calc(var(--spacing) * 16);
+  }
+  .top-20 {
+    top: calc(var(--spacing) * 20);
+  }
+  .top-40 {
+    top: calc(var(--spacing) * 40);
+  }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .right-1\/3 {
+    right: calc(1 / 3 * 100%);
+  }
+  .right-1\/4 {
+    right: calc(1 / 4 * 100%);
+  }
+  .right-6 {
+    right: calc(var(--spacing) * 6);
+  }
+  .right-10 {
+    right: calc(var(--spacing) * 10);
+  }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
+  }
+  .bottom-1\/4 {
+    bottom: calc(1 / 4 * 100%);
+  }
+  .bottom-6 {
+    bottom: calc(var(--spacing) * 6);
+  }
+  .bottom-20 {
+    bottom: calc(var(--spacing) * 20);
+  }
+  .bottom-40 {
+    bottom: calc(var(--spacing) * 40);
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
+  .left-1\/2 {
+    left: calc(1 / 2 * 100%);
+  }
+  .left-1\/3 {
+    left: calc(1 / 3 * 100%);
+  }
+  .left-1\/4 {
+    left: calc(1 / 4 * 100%);
+  }
+  .left-4 {
+    left: calc(var(--spacing) * 4);
+  }
+  .left-6 {
+    left: calc(var(--spacing) * 6);
+  }
+  .left-20 {
+    left: calc(var(--spacing) * 20);
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .z-50 {
+    z-index: 50;
+  }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .-mt-8 {
+    margin-top: calc(var(--spacing) * -8);
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mt-12 {
+    margin-top: calc(var(--spacing) * 12);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .mb-8 {
+    margin-bottom: calc(var(--spacing) * 8);
+  }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
+  .mb-12 {
+    margin-bottom: calc(var(--spacing) * 12);
+  }
+  .mb-16 {
+    margin-bottom: calc(var(--spacing) * 16);
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline {
+    display: inline;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .h-0\.5 {
+    height: calc(var(--spacing) * 0.5);
+  }
+  .h-1 {
+    height: calc(var(--spacing) * 1);
+  }
+  .h-1\.5 {
+    height: calc(var(--spacing) * 1.5);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-6 {
+    height: calc(var(--spacing) * 6);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-14 {
+    height: calc(var(--spacing) * 14);
+  }
+  .h-16 {
+    height: calc(var(--spacing) * 16);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
+  .h-32 {
+    height: calc(var(--spacing) * 32);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
+  }
+  .h-96 {
+    height: calc(var(--spacing) * 96);
+  }
+  .h-full {
+    height: 100%;
+  }
+  .min-h-\[60vh\] {
+    min-height: 60vh;
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-0 {
+    width: calc(var(--spacing) * 0);
+  }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-1\.5 {
+    width: calc(var(--spacing) * 1.5);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
+  }
+  .w-32 {
+    width: calc(var(--spacing) * 32);
+  }
+  .w-48 {
+    width: calc(var(--spacing) * 48);
+  }
+  .w-96 {
+    width: calc(var(--spacing) * 96);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-4xl {
+    max-width: var(--container-4xl);
+  }
+  .max-w-md {
+    max-width: var(--container-md);
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  .flex-grow {
+    flex-grow: 1;
+  }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-1\/2 {
+    --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-0 {
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-10 {
+    --tw-translate-y: calc(var(--spacing) * 10);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .rotate-180 {
+    rotate: 180deg;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .animate-bounce {
+    animation: var(--animate-bounce);
+  }
+  .animate-pulse {
+    animation: var(--animate-pulse);
+  }
+  .animate-spin {
+    animation: var(--animate-spin);
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
+  }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-x-6 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 6) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-4 {
+    border-style: var(--tw-border-style);
+    border-width: 4px;
+  }
+  .border-y {
+    border-block-style: var(--tw-border-style);
+    border-block-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-\[\#2D2D2D\] {
+    border-color: #2D2D2D;
+  }
+  .border-\[\#F5F5F5\] {
+    border-color: #F5F5F5;
+  }
+  .border-\[\#FFD700\] {
+    border-color: #FFD700;
+  }
+  .border-\[\#FFD700\]\/20 {
+    border-color: color-mix(in oklab, #FFD700 20%, transparent);
+  }
+  .border-\[\#FFD700\]\/30 {
+    border-color: color-mix(in oklab, #FFD700 30%, transparent);
+  }
+  .border-\[\#FFD700\]\/50 {
+    border-color: color-mix(in oklab, #FFD700 50%, transparent);
+  }
+  .border-input {
+    border-color: var(--color-input);
+  }
+  .border-slate-700 {
+    border-color: var(--color-slate-700);
+  }
+  .border-transparent {
+    border-color: transparent;
+  }
+  .border-t-cyan-400 {
+    border-top-color: var(--color-cyan-400);
+  }
+  .border-b-violet-500 {
+    border-bottom-color: var(--color-violet-500);
+  }
+  .bg-\[\#00BFFF\] {
+    background-color: #00BFFF;
+  }
+  .bg-\[\#1A1A1A\] {
+    background-color: #1A1A1A;
+  }
+  .bg-\[\#2D2D2D\] {
+    background-color: #2D2D2D;
+  }
+  .bg-\[\#2D2D2D\]\/80 {
+    background-color: color-mix(in oklab, #2D2D2D 80%, transparent);
+  }
+  .bg-\[\#25D366\] {
+    background-color: #25D366;
+  }
+  .bg-\[\#FFD700\] {
+    background-color: #FFD700;
+  }
+  .bg-amber-100 {
+    background-color: var(--color-amber-100);
+  }
+  .bg-background {
+    background-color: var(--color-background);
+  }
+  .bg-background\/95 {
+    background-color: color-mix(in srgb, hsl(var(--background)) 95%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-background) 95%, transparent);
+    }
+  }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500);
+  }
+  .bg-cyan-400 {
+    background-color: var(--color-cyan-400);
+  }
+  .bg-destructive {
+    background-color: var(--color-destructive);
+  }
+  .bg-gray-100 {
+    background-color: var(--color-gray-100);
+  }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  .bg-purple-100 {
+    background-color: var(--color-purple-100);
+  }
+  .bg-purple-500 {
+    background-color: var(--color-purple-500);
+  }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
+  }
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  .bg-transparent {
+    background-color: transparent;
+  }
+  .bg-violet-500 {
+    background-color: var(--color-violet-500);
+  }
+  .bg-gradient-to-br {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-gradient-to-r {
+    --tw-gradient-position: to right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-gradient-to-t {
+    --tw-gradient-position: to top in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .from-\[\#1A1A1A\] {
+    --tw-gradient-from: #1A1A1A;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-\[\#FFD700\] {
+    --tw-gradient-from: #FFD700;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-slate-900 {
+    --tw-gradient-from: var(--color-slate-900);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .via-\[\#00BFFF\] {
+    --tw-gradient-via: #00BFFF;
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .via-slate-800 {
+    --tw-gradient-via: var(--color-slate-800);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .via-transparent {
+    --tw-gradient-via: transparent;
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-\[\#1A1A1A\] {
+    --tw-gradient-to: #1A1A1A;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-\[\#FFD700\] {
+    --tw-gradient-to: #FFD700;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-slate-900 {
+    --tw-gradient-to: var(--color-slate-900);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-transparent {
+    --tw-gradient-to: transparent;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  .px-10 {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
+  }
+  .py-16 {
+    padding-block: calc(var(--spacing) * 16);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .pt-0 {
+    padding-top: calc(var(--spacing) * 0);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
+  .pt-16 {
+    padding-top: calc(var(--spacing) * 16);
+  }
+  .pb-4 {
+    padding-bottom: calc(var(--spacing) * 4);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
+  .font-black {
+    --tw-font-weight: var(--font-weight-black);
+    font-weight: var(--font-weight-black);
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .tracking-wide {
+    --tw-tracking: var(--tracking-wide);
+    letter-spacing: var(--tracking-wide);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-\[\#1A1A1A\] {
+    color: #1A1A1A;
+  }
+  .text-\[\#F5F5F5\] {
+    color: #F5F5F5;
+  }
+  .text-\[\#F5F5F5\]\/60 {
+    color: color-mix(in oklab, #F5F5F5 60%, transparent);
+  }
+  .text-\[\#F5F5F5\]\/70 {
+    color: color-mix(in oklab, #F5F5F5 70%, transparent);
+  }
+  .text-\[\#F5F5F5\]\/80 {
+    color: color-mix(in oklab, #F5F5F5 80%, transparent);
+  }
+  .text-\[\#F5F5F5\]\/90 {
+    color: color-mix(in oklab, #F5F5F5 90%, transparent);
+  }
+  .text-\[\#FFD700\] {
+    color: #FFD700;
+  }
+  .text-amber-600 {
+    color: var(--color-amber-600);
+  }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
+  .text-cyan-400 {
+    color: var(--color-cyan-400);
+  }
+  .text-destructive-foreground {
+    color: var(--color-destructive-foreground);
+  }
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+  .text-gray-900 {
+    color: var(--color-gray-900);
+  }
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-primary-foreground {
+    color: var(--color-primary-foreground);
+  }
+  .text-purple-700 {
+    color: var(--color-purple-700);
+  }
+  .text-secondary-foreground {
+    color: var(--color-secondary-foreground);
+  }
+  .text-slate-400 {
+    color: var(--color-slate-400);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .underline-offset-4 {
+    text-underline-offset: 4px;
+  }
+  .opacity-0 {
+    opacity: 0%;
+  }
+  .opacity-10 {
+    opacity: 10%;
+  }
+  .opacity-15 {
+    opacity: 15%;
+  }
+  .opacity-20 {
+    opacity: 20%;
+  }
+  .opacity-25 {
+    opacity: 25%;
+  }
+  .opacity-30 {
+    opacity: 30%;
+  }
+  .opacity-100 {
+    opacity: 100%;
+  }
+  .shadow {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[\#25D366\]\/30 {
+    --tw-shadow-color: color-mix(in srgb, #25D366 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #25D366 30%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-\[\#FFD700\]\/30 {
+    --tw-shadow-color: color-mix(in srgb, #FFD700 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #FFD700 30%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-black\/50 {
+    --tw-shadow-color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 50%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .ring-offset-background {
+    --tw-ring-offset-color: var(--color-background);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+  .backdrop-blur {
+    --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .backdrop-blur-sm {
+    --tw-backdrop-blur: blur(var(--blur-sm));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .delay-200 {
+    transition-delay: 200ms;
+  }
+  .delay-400 {
+    transition-delay: 400ms;
+  }
+  .delay-600 {
+    transition-delay: 600ms;
+  }
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  .duration-1000 {
+    --tw-duration: 1000ms;
+    transition-duration: 1000ms;
+  }
+  .group-hover\:w-full {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        width: 100%;
+      }
+    }
+  }
+  .group-hover\:scale-110 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-scale-x: 110%;
+        --tw-scale-y: 110%;
+        --tw-scale-z: 110%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
+  .group-hover\:opacity-100 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        opacity: 100%;
+      }
+    }
+  }
+  .hover\:scale-105 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
+  .hover\:border-\[\#FFD700\] {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #FFD700;
+      }
+    }
+  }
+  .hover\:bg-\[\#00BFFF\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #00BFFF;
+      }
+    }
+  }
+  .hover\:bg-\[\#2D2D2D\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #2D2D2D;
+      }
+    }
+  }
+  .hover\:bg-\[\#25D366\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #25D366;
+      }
+    }
+  }
+  .hover\:bg-\[\#F5F5F5\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #F5F5F5;
+      }
+    }
+  }
+  .hover\:bg-\[\#FFD700\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #FFD700;
+      }
+    }
+  }
+  .hover\:bg-accent {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-accent);
+      }
+    }
+  }
+  .hover\:bg-destructive\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, hsl(var(--destructive)) 90%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-destructive) 90%, transparent);
+        }
+      }
+    }
+  }
+  .hover\:bg-primary\/90 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, hsl(var(--primary)) 90%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-primary) 90%, transparent);
+        }
+      }
+    }
+  }
+  .hover\:bg-secondary\/80 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, hsl(var(--secondary)) 80%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-secondary) 80%, transparent);
+        }
+      }
+    }
+  }
+  .hover\:text-\[\#1A1A1A\] {
+    &:hover {
+      @media (hover: hover) {
+        color: #1A1A1A;
+      }
+    }
+  }
+  .hover\:text-\[\#FFD700\] {
+    &:hover {
+      @media (hover: hover) {
+        color: #FFD700;
+      }
+    }
+  }
+  .hover\:text-accent-foreground {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-accent-foreground);
+      }
+    }
+  }
+  .hover\:text-blue-800 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-blue-800);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .hover\:shadow-lg {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:shadow-\[\#FFD700\]\/20 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow-color: color-mix(in srgb, #FFD700 20%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, #FFD700 20%, transparent) var(--tw-shadow-alpha), transparent);
+        }
+      }
+    }
+  }
+  .focus-visible\:ring-2 {
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-visible\:ring-ring {
+    &:focus-visible {
+      --tw-ring-color: var(--color-ring);
+    }
+  }
+  .focus-visible\:ring-offset-2 {
+    &:focus-visible {
+      --tw-ring-offset-width: 2px;
+      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    }
+  }
+  .focus-visible\:outline-none {
+    &:focus-visible {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .disabled\:pointer-events-none {
+    &:disabled {
+      pointer-events: none;
+    }
+  }
+  .disabled\:opacity-50 {
+    &:disabled {
+      opacity: 50%;
+    }
+  }
+  .sm\:inline {
+    @media (width >= 40rem) {
+      display: inline;
+    }
+  }
+  .sm\:flex-row {
+    @media (width >= 40rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:h-16 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 16);
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:gap-6 {
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 6);
+    }
+  }
+  .md\:text-2xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
+  .md\:text-5xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+    }
+  }
+  .md\:text-6xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .md\:text-8xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-8xl);
+      line-height: var(--tw-leading, var(--text-8xl--line-height));
+    }
+  }
+  .lg\:block {
+    @media (width >= 64rem) {
+      display: block;
+    }
+  }
+  .lg\:flex {
+    @media (width >= 64rem) {
+      display: flex;
+    }
+  }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+  .lg\:grid-cols-2 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-6 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+  .lg\:text-9xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-9xl);
+      line-height: var(--tw-leading, var(--text-9xl--line-height));
+    }
+  }
+}
+:root {
+  --electric-yellow: #FFD700;
+  --electric-blue: #00BFFF;
+  --charcoal-black: #1A1A1A;
+  --steel-grey: #2D2D2D;
+  --crisp-white: #F5F5F5;
+  --background: 0 0% 7%;
+  --foreground: 0 0% 96%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 96%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 96%;
+  --primary: 48 100% 50%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 96%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 48 100% 50%;
+  --accent-foreground: 0 0% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 48 100% 50%;
+  --radius: 0.5rem;
+}
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    direction: rtl;
+    font-family: 'Heebo', sans-serif;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-weight: 900;
+    background-color: var(--charcoal-black);
+    color: var(--crisp-white);
+  }
+  h1, h2, h3, h4, h5, h6, p, span, a, button, li, label, input, textarea, select {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 900;
+  }
+  .container {
+    margin-inline: auto;
+    max-width: 1400px;
+  }
+}
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+    transform: scale(1.05);
+  }
+}
+.pulse-animation {
+  animation: pulse-glow 2s infinite;
+}
+@keyframes spark-flicker {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  40% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.9;
+  }
+}
+.spark-flicker {
+  animation: spark-flicker 3s infinite;
+}
+@keyframes lightning-flash {
+  0%, 100% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.7;
+  }
+  60% {
+    opacity: 0;
+  }
+}
+.lightning-flash {
+  animation: lightning-flash 4s infinite;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.count-up {
+  animation: count-up 0.5s ease-out forwards;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+.glow-effect:hover {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+}
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+.circuit-pattern {
+  background-image: linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px), linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.wave-divider {
+  height: 60px;
+  background: linear-gradient(135deg, var(--charcoal-black) 25%, transparent 25%) -30px 0, linear-gradient(225deg, var(--charcoal-black) 25%, transparent 25%) -30px 0, linear-gradient(315deg, var(--charcoal-black) 25%, transparent 25%), linear-gradient(45deg, var(--charcoal-black) 25%, transparent 25%);
+  background-size: 60px 60px;
+  background-color: var(--steel-grey);
+}
+.electric-wave {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 Q150 0 300 30 T600 30 T900 30 T1200 30' fill='none' stroke='%23FFD700' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
+  height: 60px;
+}
+.faq-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+.faq-content.open {
+  max-height: 500px;
+}
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.mobile-menu.open {
+  max-height: 500px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--charcoal-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--electric-yellow);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue);
+}
+::selection {
+  background: var(--electric-yellow);
+  color: var(--charcoal-black);
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-x-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-space-x-reverse: 0;
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
+</style></head><body><div class="flex min-h-screen flex-col"><header class="sticky top-0 z-50"><div class="bg-[#2D2D2D] border-b border-[#FFD700]/20"><div class="container"><div class="flex items-center justify-between py-2 overflow-x-auto"><div class="flex items-center gap-4 md:gap-6"><div class="flex items-center gap-2 text-[#F5F5F5] whitespace-nowrap text-sm font-bold"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span>מוסמך</span></div><div class="flex items-center gap-2 text-[#F5F5F5] whitespace-nowrap text-sm font-bold"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></span><span>מנוסה</span></div><div class="flex items-center gap-2 text-[#F5F5F5] whitespace-nowrap text-sm font-bold"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span>מבוטח</span></div><div class="flex items-center gap-2 text-[#F5F5F5] whitespace-nowrap text-sm font-bold"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></span><span>מדורג 5 כוכבים</span></div><div class="flex items-center gap-2 text-[#F5F5F5] whitespace-nowrap text-sm font-bold"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span>זמין 24/7</span></div></div><a class="hidden lg:flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded font-bold hover:bg-[#00BFFF] transition-colors" href="/צור-קשר" data-discover="true"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg>התקשר עכשיו</a></div></div></div><div class="bg-[#1A1A1A] circuit-pattern shadow-lg shadow-black/50"><div class="container"><div class="flex items-center justify-between py-4"><a class="flex items-center gap-2" href="/" data-discover="true"><img src="https://assets.ls-assets.com/uploads/19754c85-8b8e-4156-9be3-36e852ea5497/ffa50f09-cb15-47d7-b51a-d4888958ce6f.png?w=768" alt="חשמלאי לוגו" class="h-14 md:h-16"></a><nav class="hidden lg:flex items-center gap-8"><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors relative group" href="/צור-קשר" data-discover="true">צור קשר<span class="absolute bottom-0 right-0 w-0 h-0.5 bg-[#FFD700] transition-all group-hover:w-full"></span></a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors relative group" href="/פרויקטים" data-discover="true">פרויקטים<span class="absolute bottom-0 right-0 w-0 h-0.5 bg-[#FFD700] transition-all group-hover:w-full"></span></a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors relative group" href="/שירותים" data-discover="true">שירותים<span class="absolute bottom-0 right-0 w-0 h-0.5 bg-[#FFD700] transition-all group-hover:w-full"></span></a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors relative group" href="/" data-discover="true">בית<span class="absolute bottom-0 right-0 w-0 h-0.5 bg-[#FFD700] transition-all group-hover:w-full"></span></a></nav><button class="lg:hidden text-[#F5F5F5] p-2" aria-label="תפריט"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button></div></div><div class="mobile-menu lg:hidden "><div class="container pb-4"><nav class="flex flex-col gap-4"><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors py-2 border-b border-[#2D2D2D]" href="/צור-קשר" data-discover="true">צור קשר</a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors py-2 border-b border-[#2D2D2D]" href="/פרויקטים" data-discover="true">פרויקטים</a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors py-2 border-b border-[#2D2D2D]" href="/שירותים" data-discover="true">שירותים</a><a class="text-[#F5F5F5] font-bold text-lg hover:text-[#FFD700] transition-colors py-2 border-b border-[#2D2D2D]" href="/" data-discover="true">בית</a><a class="flex items-center justify-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-3 rounded font-bold hover:bg-[#00BFFF] transition-colors mt-2" href="/צור-קשר" data-discover="true"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg>התקשר עכשיו</a></nav></div></div></div><div class="bg-[#FFD700] overflow-hidden"><div class="flex animate-marquee"><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>זמינים 24 שעות ביממה</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>תיקון תקלות חשמל, התקנות, לוחות חשמל</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מחירים הוגנים</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מורשה ומבוטח</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מעל 800 עבודות בוצעו</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>זמינים 24 שעות ביממה</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>תיקון תקלות חשמל, התקנות, לוחות חשמל</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מחירים הוגנים</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מורשה ומבוטח</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מעל 800 עבודות בוצעו</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>זמינים 24 שעות ביממה</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>תיקון תקלות חשמל, התקנות, לוחות חשמל</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מחירים הוגנים</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מורשה ומבוטח</span></div><div class="flex items-center gap-4 px-8 py-2 text-[#1A1A1A] font-bold whitespace-nowrap"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span>מעל 800 עבודות בוצעו</span></div></div></div></header><main class="flex-1"><div class="min-h-screen bg-[#1A1A1A]"><section class="relative min-h-screen flex items-center overflow-hidden circuit-pattern"><div class="absolute inset-0 pointer-events-none"><svg class="absolute top-10 right-10 w-32 h-32 lightning-flash opacity-30" viewBox="0 0 100 100"><path d="M50 0L20 50H45L35 100L80 40H55L50 0Z" fill="#FFD700"></path></svg><svg class="absolute top-1/4 left-20 w-24 h-24 lightning-flash opacity-20" style="animation-delay:1s" viewBox="0 0 100 100"><path d="M50 0L20 50H45L35 100L80 40H55L50 0Z" fill="#00BFFF"></path></svg><svg class="absolute bottom-1/4 right-1/4 w-20 h-20 lightning-flash opacity-25" style="animation-delay:2s" viewBox="0 0 100 100"><path d="M50 0L20 50H45L35 100L80 40H55L50 0Z" fill="#FFD700"></path></svg><svg class="absolute top-1/2 left-1/3 w-16 h-16 lightning-flash opacity-15" style="animation-delay:0.5s" viewBox="0 0 100 100"><path d="M50 0L20 50H45L35 100L80 40H55L50 0Z" fill="#FFD700"></path></svg></div><div class="absolute top-20 right-1/4 w-2 h-2 bg-[#FFD700] rounded-full spark-flicker"></div><div class="absolute top-40 left-1/3 w-1 h-1 bg-[#00BFFF] rounded-full spark-flicker" style="animation-delay:0.5s"></div><div class="absolute bottom-40 right-1/3 w-2 h-2 bg-[#FFD700] rounded-full spark-flicker" style="animation-delay:1s"></div><div class="absolute bottom-20 left-1/4 w-1 h-1 bg-[#FFD700] rounded-full spark-flicker" style="animation-delay:1.5s"></div><div class="container relative z-10 py-20"><div class="text-center"><div class="flex flex-wrap justify-center gap-3 mb-8"><span class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-bold float-animation" style="animation-delay:0s"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>תיקון תקלות</span><span class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-bold float-animation" style="animation-delay:0.2s"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>התקנת לוח חשמל</span><span class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-bold float-animation" style="animation-delay:0.4s"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>חשמל ביתי</span><span class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-bold float-animation" style="animation-delay:0.6000000000000001s"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>חשמל עסקי</span><span class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-bold float-animation" style="animation-delay:0.8s"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>מערכות סולאריות</span></div><h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-[#F5F5F5] mb-6 transition-all duration-1000 opacity-100 translate-y-0">המומחים לחשמל שלך</h1><p class="text-xl md:text-2xl text-[#F5F5F5]/90 mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-200 opacity-100 translate-y-0">שירות חשמל מקצועי לבית ולעסק — זמינים 24/7 ומגיעים אליך תוך 30 דקות</p><div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16 transition-all duration-1000 delay-400 opacity-100 translate-y-0"><a class="flex items-center gap-3 bg-[#FFD700] text-[#1A1A1A] px-8 py-4 rounded-lg text-xl font-bold hover:bg-[#00BFFF] hover:text-white transition-all transform hover:scale-105 shadow-lg shadow-[#FFD700]/30" href="/צור-קשר" data-discover="true">קבל הצעת מחיר חינם<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="flex items-center gap-3 border-2 border-[#F5F5F5] text-[#F5F5F5] px-8 py-4 rounded-lg text-xl font-bold hover:bg-[#F5F5F5] hover:text-[#1A1A1A] transition-all" href="/שירותים" data-discover="true">השירותים שלנו</a></div><div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto transition-all duration-1000 delay-600 opacity-100 translate-y-0"><div class="bg-[#2D2D2D]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20"><div class="flex justify-center mb-3"><svg class="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div><div class="text-4xl md:text-5xl font-black text-[#FFD700] mb-2">15+</div><div class="text-[#F5F5F5] font-bold">שנות ניסיון</div></div><div class="bg-[#2D2D2D]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20"><div class="flex justify-center mb-3"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2V7M12 7C10.3431 7 9 8.34315 9 10V15H15V10C15 8.34315 13.6569 7 12 7Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M9 15V19C9 20.1046 9.89543 21 11 21H13C14.1046 21 15 20.1046 15 19V15" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M7 21H17" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></div><div class="text-4xl md:text-5xl font-black text-[#FFD700] mb-2">800+</div><div class="text-[#F5F5F5] font-bold">עבודות בוצעו</div></div><div class="bg-[#2D2D2D]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20"><div class="flex justify-center mb-3"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></div><div class="text-4xl md:text-5xl font-black text-[#FFD700] mb-2">100%</div><div class="text-[#F5F5F5] font-bold">שביעות רצון</div></div><div class="bg-[#2D2D2D]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20"><div class="flex justify-center mb-3"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="text-4xl md:text-5xl font-black text-[#FFD700] mb-2">על כל עבודה</div><div class="text-[#F5F5F5] font-bold">אחריות</div></div></div></div></div><div class="absolute bottom-0 left-0 right-0 h-16"><svg viewBox="0 0 1200 60" class="w-full h-full" preserveAspectRatio="none"><path d="M0 30 Q100 10 200 30 T400 30 T600 30 T800 30 T1000 30 T1200 30" fill="none" stroke="#FFD700" stroke-width="3" class="spark-flicker"></path><path d="M0 30 Q100 50 200 30 T400 30 T600 30 T800 30 T1000 30 T1200 30" fill="none" stroke="#00BFFF" stroke-width="2" opacity="0.5"></path></svg></div></section><section class="bg-[#2D2D2D] py-8 border-y border-[#FFD700]/20"><div class="container"><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="text-[#F5F5F5] font-bold text-sm">זמינות 24/7</span></div><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="text-[#F5F5F5] font-bold text-sm">מבוטח במלואו</span></div><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="text-[#F5F5F5] font-bold text-sm">רישיון ממשלתי</span></div><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></span><span class="text-[#F5F5F5] font-bold text-sm">דירוג 5 כוכבים</span></div><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></span><span class="text-[#F5F5F5] font-bold text-sm">אחריות על עבודה</span></div><div class="flex flex-col items-center text-center gap-2"><span class="text-[#FFD700]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.59 13.41L13.42 20.58C13.2343 20.766 13.0137 20.9135 12.7709 21.0141C12.5281 21.1148 12.2678 21.1666 12.005 21.1666C11.7422 21.1666 11.4819 21.1148 11.2391 21.0141C10.9963 20.9135 10.7757 20.766 10.59 20.58L2 12V2H12L20.59 10.59C20.9625 10.9647 21.1716 11.4716 21.1716 12C21.1716 12.5284 20.9625 13.0353 20.59 13.41Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="7" cy="7" r="1.5" fill="#FFD700"></circle></svg></span><span class="text-[#F5F5F5] font-bold text-sm">הצעת מחיר חינם</span></div></div></div></section><section class="bg-[#1A1A1A] py-16"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">השירותים שלנו</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></span><span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">דחוף</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">תיקון תקלות חשמל</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">פתרון מקצועי לכל תקלת חשמל בבית או בעסק</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="24" height="20" rx="2" stroke="#FFD700" stroke-width="2"></rect><path d="M10 12V16M10 12H14M10 16H14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M16 12V16M16 12H20M16 16H20" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M10 20V24M16 20V24M22 20V24" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="bg-[#FFD700] text-white text-xs font-bold px-2 py-1 rounded">פופולרי</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">התקנת לוח חשמל</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">התקנה ושדרוג לוחות חשמל בטוחים ותקניים</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2V7M12 7C10.3431 7 9 8.34315 9 10V15H15V10C15 8.34315 13.6569 7 12 7Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M9 15V19C9 20.1046 9.89543 21 11 21H13C14.1046 21 15 20.1046 15 19V15" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M7 21H17" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="bg-[#FFD700] text-white text-xs font-bold px-2 py-1 rounded">פופולרי</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">התקנת שקעים ומתגים</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">התקנת שקעים, מתגים ונקודות חשמל חדשות</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H15M12 3C8.68629 3 6 5.68629 6 9C6 11.2208 7.2068 13.1599 9 14.1973V17H15V14.1973C16.7932 13.1599 18 11.2208 18 9C18 5.68629 15.3137 3 12 3Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 21H15" stroke="#FFD700" stroke-width="2"></path></svg></span><span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">חדש</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">התקנת תאורה</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">התקנת פנסים, מנורות ותאורת LED חסכונית</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="24" height="16" rx="2" stroke="#FFD700" stroke-width="2"></rect><path d="M4 14H28M4 20H28M12 8V24M20 8V24" stroke="#FFD700" stroke-width="1.5"></path><path d="M14 24L16 28L18 24" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">ירוק</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">מערכות סולאריות</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">תכנון והתקנת מערכות סולאריות לבתים ועסקים</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#FFD700" stroke-width="2"></circle><path d="M12 7V12L15 15" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M4 4L6 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M20 4L18 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">חיוני</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">בדיקות חשמל</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">בדיקות בטיחות ומדידות חשמל מקצועיות</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="16" cy="16" rx="10" ry="6" stroke="#FFD700" stroke-width="2"></ellipse><ellipse cx="16" cy="12" rx="10" ry="6" stroke="#FFD700" stroke-width="2"></ellipse><ellipse cx="16" cy="8" rx="10" ry="6" stroke="#FFD700" stroke-width="2"></ellipse><path d="M6 8V4M26 8V4" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded">מומחיות</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">החלפת כבלים</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">החלפת כבלים פגומים וחיווט מקצועי</p></div></a><a class="bg-[#2D2D2D] rounded-xl p-6 border border-[#FFD700]/20 hover:border-[#FFD700] transition-all hover:shadow-lg hover:shadow-[#FFD700]/20 card-hover group" href="/שירותים" data-discover="true"><div class="flex flex-col h-full"><div class="flex items-start justify-between mb-4"><span class="text-[#FFD700] group-hover:scale-110 transition-transform"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L22 20H2L12 3Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M12 10V14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="17" r="1" fill="#FFD700"></circle></svg></span><span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">חירום</span></div><h3 class="text-xl font-black text-[#F5F5F5] mb-2">חשמלאי חירום 24/7</h3><p class="text-[#F5F5F5]/70 font-bold text-sm flex-grow">זמינות מלאה לתקלות חירום בכל שעה</p></div></a></div><div class="mt-12 bg-[#2D2D2D] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4 border border-[#FFD700]/20"><div class="flex items-center gap-4"><svg class="w-12 h-12 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg><p class="text-[#F5F5F5] font-bold text-lg">לא מצאת את השירות שאתה מחפש? התקשר אלינו ונמצא פתרון!</p></div><a class="bg-[#FFD700] text-[#1A1A1A] px-6 py-3 rounded-lg font-bold hover:bg-[#00BFFF] hover:text-white transition-all whitespace-nowrap" href="/צור-קשר" data-discover="true">דברו איתנו</a></div></div></section><section class="bg-[#2D2D2D] py-16"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">למה לבחור בנו?</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="space-y-4"><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">15 שנות ניסיון בתחום החשמל</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">צוות חשמלאים מוסמך ומנוסה</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">זמינות 24/7 כולל שבתות וחגים</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">מגיעים תוך 30 דקות לכל תקלה</span></div></div><div class="flex flex-col items-center"><div class="relative w-48 h-48 mb-6"><div class="absolute inset-0 rounded-full border-4 border-[#FFD700] animate-pulse"></div><div class="absolute inset-4 rounded-full border-2 border-[#FFD700]/50"></div><div class="absolute inset-0 flex items-center justify-center"><div class="text-center"><div class="text-5xl font-black text-[#FFD700]">15+</div><div class="text-[#F5F5F5] font-bold text-sm">שנות ניסיון</div></div></div></div><div class="grid grid-cols-2 gap-4"><div class="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-lg border border-[#FFD700]/20"><span class="text-[#FFD700]"><svg class="w-6 h-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></span><span class="text-[#F5F5F5] font-bold">מקצועי</span></div><div class="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-lg border border-[#FFD700]/20"><span class="text-[#FFD700]"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="text-[#F5F5F5] font-bold">מהיר</span></div><div class="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-lg border border-[#FFD700]/20"><span class="text-[#FFD700]"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="text-[#F5F5F5] font-bold">אמין</span></div><div class="flex items-center gap-2 bg-[#1A1A1A] px-4 py-2 rounded-lg border border-[#FFD700]/20"><span class="text-[#FFD700]"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg></span><span class="text-[#F5F5F5] font-bold">מוביל</span></div></div></div><div class="space-y-4"><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">מחירים הוגנים ללא הפתעות</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">כיסוי ביטוחי מלא לכל עבודה</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">רישיון ממשלתי והסמכות מקצועיות</span></div><div class="flex items-center gap-3"><svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M8 12L11 15L16 9" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5] font-bold text-lg">אחריות על כל עבודה ותיקון</span></div></div></div><div class="flex flex-wrap justify-center gap-4 mt-12"><div class="flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>תל אביב</div><div class="flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>רמת גן</div><div class="flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>הרצליה</div><div class="flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>פתח תקווה</div><div class="flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>ראשון לציון</div></div></div></section><section class="bg-[#1A1A1A] py-16 circuit-pattern"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">איך זה עובד?</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative"><div class="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-[#FFD700] via-[#00BFFF] to-[#FFD700]"></div><div class="flex flex-col items-center text-center relative z-10"><div class="w-16 h-16 rounded-full bg-[#FFD700] flex items-center justify-center mb-4 shadow-lg shadow-[#FFD700]/30"><span class="text-3xl font-black text-[#1A1A1A]">1</span></div><div class="w-16 h-16 rounded-full bg-[#2D2D2D] border-4 border-[#FFD700] flex items-center justify-center mb-4 -mt-8"><span class="text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg></span></div><h3 class="text-2xl font-black text-[#F5F5F5] mb-2">יצירת קשר</h3><p class="text-[#F5F5F5]/70 font-bold mb-3">התקשרו אלינו או שלחו הודעה</p><span class="bg-[#FFD700] text-[#1A1A1A] px-3 py-1 rounded-full text-sm font-bold">מיידי</span></div><div class="flex flex-col items-center text-center relative z-10"><div class="w-16 h-16 rounded-full bg-[#FFD700] flex items-center justify-center mb-4 shadow-lg shadow-[#FFD700]/30"><span class="text-3xl font-black text-[#1A1A1A]">2</span></div><div class="w-16 h-16 rounded-full bg-[#2D2D2D] border-4 border-[#FFD700] flex items-center justify-center mb-4 -mt-8"><span class="text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#FFD700" stroke-width="2"></circle><path d="M12 7V12L15 15" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M4 4L6 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M20 4L18 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></span></div><h3 class="text-2xl font-black text-[#F5F5F5] mb-2">אבחון הבעיה</h3><p class="text-[#F5F5F5]/70 font-bold mb-3">נאבחן את התקלה במדויק</p><span class="bg-[#FFD700] text-[#1A1A1A] px-3 py-1 rounded-full text-sm font-bold">מדויק</span></div><div class="flex flex-col items-center text-center relative z-10"><div class="w-16 h-16 rounded-full bg-[#FFD700] flex items-center justify-center mb-4 shadow-lg shadow-[#FFD700]/30"><span class="text-3xl font-black text-[#1A1A1A]">3</span></div><div class="w-16 h-16 rounded-full bg-[#2D2D2D] border-4 border-[#FFD700] flex items-center justify-center mb-4 -mt-8"><span class="text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.59 13.41L13.42 20.58C13.2343 20.766 13.0137 20.9135 12.7709 21.0141C12.5281 21.1148 12.2678 21.1666 12.005 21.1666C11.7422 21.1666 11.4819 21.1148 11.2391 21.0141C10.9963 20.9135 10.7757 20.766 10.59 20.58L2 12V2H12L20.59 10.59C20.9625 10.9647 21.1716 11.4716 21.1716 12C21.1716 12.5284 20.9625 13.0353 20.59 13.41Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="7" cy="7" r="1.5" fill="#FFD700"></circle></svg></span></div><h3 class="text-2xl font-black text-[#F5F5F5] mb-2">הצעת מחיר</h3><p class="text-[#F5F5F5]/70 font-bold mb-3">תקבלו הצעת מחיר שקופה</p><span class="bg-[#FFD700] text-[#1A1A1A] px-3 py-1 rounded-full text-sm font-bold">שקוף</span></div><div class="flex flex-col items-center text-center relative z-10"><div class="w-16 h-16 rounded-full bg-[#FFD700] flex items-center justify-center mb-4 shadow-lg shadow-[#FFD700]/30"><span class="text-3xl font-black text-[#1A1A1A]">4</span></div><div class="w-16 h-16 rounded-full bg-[#2D2D2D] border-4 border-[#FFD700] flex items-center justify-center mb-4 -mt-8"><span class="text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></span></div><h3 class="text-2xl font-black text-[#F5F5F5] mb-2">תיקון וסיום</h3><p class="text-[#F5F5F5]/70 font-bold mb-3">נתקן ונבטיח איכות</p><span class="bg-[#FFD700] text-[#1A1A1A] px-3 py-1 rounded-full text-sm font-bold">עם אחריות</span></div></div></div></section><section class="bg-[#2D2D2D] py-16"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">הפרויקטים שלנו</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2267268610.jpg?w=768" alt="התקנת לוח חשמל" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">דירה פרטית</span><h3 class="text-xl font-black text-white">התקנת לוח חשמל</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2259318138.jpg?w=768" alt="חיווט חשמל מלא" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">שיפוץ מלא</span><h3 class="text-xl font-black text-white">חיווט חשמל מלא</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2196158127.jpg?w=768" alt="התקנת תאורה" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">עסק מסחרי</span><h3 class="text-xl font-black text-white">התקנת תאורה</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2256303189.jpg?w=768" alt="תיקון תקלה" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">דירה פרטית</span><h3 class="text-xl font-black text-white">תיקון תקלה</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2199111472.jpg?w=768" alt="התקנת פאנלים" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">מערכת סולארית</span><h3 class="text-xl font-black text-white">התקנת פאנלים</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2213571973.jpg?w=768" alt="החלפת כבלים" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">שיפוץ מלא</span><h3 class="text-xl font-black text-white">החלפת כבלים</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2249306331.jpg?w=768" alt="בדיקת בטיחות" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">עסק מסחרי</span><h3 class="text-xl font-black text-white">בדיקת בטיחות</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2233277944.jpg?w=768" alt="התקנת שקעים" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">דירה פרטית</span><h3 class="text-xl font-black text-white">התקנת שקעים</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div><div class="relative overflow-hidden rounded-xl bg-[#1A1A1A] group cursor-pointer"><img src="https://assets.ls-assets.com/provider/istock/2175868193.jpg?w=768" alt="שדרוג לוח" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-4"><span class="inline-block bg-[#FFD700] text-[#1A1A1A] text-xs font-bold px-2 py-1 rounded mb-2">לוח חשמל</span><h3 class="text-xl font-black text-white">שדרוג לוח</h3></div><div class="absolute top-4 left-4 opacity-30 group-hover:opacity-100 transition-opacity"><svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div></div></div><div class="text-center mt-8"><a class="inline-flex items-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-8 py-4 rounded-lg text-xl font-bold hover:bg-[#00BFFF] hover:text-white transition-all" href="/פרויקטים" data-discover="true">צפה בכל הפרויקטים<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div></div></section><section class="bg-gradient-to-r from-[#FFD700] to-[#1A1A1A] py-16 relative overflow-hidden"><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10"><svg class="w-96 h-96" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div><div class="container relative z-10"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#1A1A1A] mb-4">שירות חירום חשמלי 24/7</h2><div class="w-48 h-1 bg-[#1A1A1A] mx-auto rounded"></div></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"><div class="bg-[#1A1A1A] rounded-xl p-6 text-center border border-[#FFD700]/30"><div class="flex justify-center mb-4 text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></div><h3 class="text-2xl font-black text-white">מענה תוך 30 דקות</h3></div><div class="bg-[#1A1A1A] rounded-xl p-6 text-center border border-[#FFD700]/30"><div class="flex justify-center mb-4 text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg></div><h3 class="text-2xl font-black text-white">חשמלאי מוסמך בשטח</h3></div><div class="bg-[#1A1A1A] rounded-xl p-6 text-center border border-[#FFD700]/30"><div class="flex justify-center mb-4 text-[#FFD700]"><svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><h3 class="text-2xl font-black text-white">תיקון מובטח עם אחריות</h3></div></div><div class="text-center"><p class="text-3xl font-black text-[#1A1A1A] mb-6">יש לך תקלת חשמל?</p><a class="inline-flex items-center gap-3 bg-[#1A1A1A] text-[#FFD700] px-10 py-5 rounded-xl text-2xl font-black pulse-animation hover:bg-[#2D2D2D] transition-all" href="/חירום" data-discover="true"><svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg>התקשר עכשיו — זמינים 24/7</a></div><div class="mt-12 bg-[#1A1A1A] rounded-lg py-4 overflow-hidden"><div class="flex animate-marquee"><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">נפל חשמל</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">קצר חשמלי</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">תקלה בלוח</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">אין חשמל</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">סכנת התחשמלות</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">כל תקלה</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">אנחנו כאן</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">נפל חשמל</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">קצר חשמלי</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">תקלה בלוח</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">אין חשמל</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">סכנת התחשמלות</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">כל תקלה</span></div><div class="flex items-center gap-4 px-8"><svg class="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-white font-bold whitespace-nowrap">אנחנו כאן</span></div></div></div></div></section><section class="bg-[#1A1A1A] py-16"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">שאלות נפוצות</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="max-w-3xl mx-auto space-y-4"><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">כמה עולה תיקון תקלת חשמל?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">המחיר תלוי בסוג התקלה ומורכבותה. אנחנו מספקים הצעת מחיר שקופה לפני כל עבודה, ללא הפתעות. התקשרו לקבלת הערכת מחיר מדויקת.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">האם אתם זמינים בשבת ובלילה?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">כן! אנחנו זמינים 24/7 כולל שבתות, חגים וחגים. תקלות חשמל לא מחכות ואנחנו פה בכל שעה.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">כמה זמן לוקח להגיע לתקלת חירום?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">אנחנו מתחייבים להגיע תוך 30 דקות מרגע הקריאה. זמינות מהירה היא אחד היתרונות המרכזיים שלנו.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">האם אתם מתקינים לוחות חשמל חדשים?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">בוודאי! אנחנו מתקינים ומשדרגים לוחות חשמל בהתאם לתקנים המעודכנים, עם אחריות מלאה על העבודה.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">מה כולל שירות חירום חשמלי?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">שירות חירום כולל: הגעה מהירה, אבחון התקלה, תיקון מקצועי, ואחריות על העבודה. הכל במחיר הוגן ושקוף.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">האם יש אחריות על העבודה?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">כן! כל עבודה מגיעה עם אחריות מלאה. אנחנו עומדים מאחורי האיכות שלנו ומבטיחים שביעות רצון מלאה.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">האם אתם מתקינים מערכות סולאריות?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">כן! אנחנו מתמחים בתכנון והתקנת מערכות סולאריות לבתים פרטיים ועסקים. פנו אלינו לקבלת הצעת מחיר מותאמת.</p></div></div><div class="bg-[#2D2D2D] rounded-xl overflow-hidden border border-[#FFD700]/20"><button class="w-full flex items-center justify-between p-4 text-right"><span class="text-[#F5F5F5] font-bold text-lg">איך מזמינים חשמלאי?</span><svg class="w-6 h-6 text-[#FFD700] transition-transform " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button><div class="faq-content "><p class="text-[#F5F5F5]/70 font-bold p-4 pt-0">פשוט התקשרו אלינו, שלחו הודעת וואטסאפ, או מלאו את הטופס בעמוד צור קשר. אנחנו נחזור אליכם תוך דקות!</p></div></div></div></div></section><section class="bg-[#2D2D2D] py-16"><div class="container"><div class="text-center mb-12"><h2 class="text-5xl md:text-6xl font-black text-[#F5F5F5] mb-4">צור קשר עכשיו</h2><div class="w-48 h-1 bg-[#FFD700] mx-auto rounded"></div></div><div class="grid grid-cols-1 lg:grid-cols-2 gap-8"><div class="bg-[#1A1A1A] rounded-xl p-8 border border-[#FFD700]/20"><h3 class="text-3xl font-black text-[#FFD700] mb-6">פרטי יצירת קשר</h3><div class="space-y-4"><div class="flex items-center gap-4"><svg class="w-8 h-8 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg><div><span class="text-[#F5F5F5]/60 font-bold">טלפון:</span><a href="tel:0500000000" class="text-[#F5F5F5] font-bold text-xl mr-2 hover:text-[#FFD700]">050-000-0000</a></div></div><div class="flex items-center gap-4"><svg class="w-8 h-8 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#FFD700" stroke-width="2"></rect><path d="M2 6L12 13L22 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><div><span class="text-[#F5F5F5]/60 font-bold">אימייל:</span><a href="mailto:info@hashmalay.co.il" class="text-[#F5F5F5] font-bold mr-2 hover:text-[#FFD700]">info@hashmalay.co.il</a></div></div><div class="flex items-center gap-4"><svg class="w-8 h-8 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5C21 16.1944 17.1944 20 12.5 20C11.0779 20 9.74381 19.5988 8.59609 18.9069L2.5 20L3.64356 14.2371C2.85357 12.9818 2.5 11.5497 2.5 10C2.5 5.30558 6.30558 1.5 11 1.5C15.6944 1.5 19.5 5.30558 19.5 10C19.5 14.6944 15.6944 18.5 11 18.5" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M8 8L10.5 10.5M15.5 10.5L18 8M15.5 13.5L18 16" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><span class="text-[#F5F5F5] font-bold">שלח הודעה ישירה בוואטסאפ</span></div><div class="flex items-center gap-4"><svg class="w-8 h-8 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><span class="text-[#F5F5F5] font-bold">24/7 כולל שבתות וחגים</span></div><div class="flex items-center gap-4"><svg class="w-8 h-8 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg><span class="text-[#F5F5F5] font-bold">תל אביב והמרכז</span></div></div><div class="flex flex-wrap gap-3 mt-8"><span class="bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold text-sm">מענה תוך 30 דקות</span><span class="bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold text-sm">ללא התחייבות</span><span class="bg-[#FFD700] text-[#1A1A1A] px-4 py-2 rounded-full font-bold text-sm">ייעוץ חינם</span></div><div class="mt-8 space-y-4"><a class="flex items-center justify-center gap-3 bg-[#FFD700] text-[#1A1A1A] px-6 py-4 rounded-lg font-bold text-xl hover:bg-[#00BFFF] transition-all" href="tel:0500000000"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg>התקשר עכשיו</a><a class="flex items-center justify-center gap-3 bg-[#1A1A1A] text-[#FFD700] border-2 border-[#FFD700] px-6 py-4 rounded-lg font-bold text-xl hover:bg-[#FFD700] hover:text-[#1A1A1A] transition-all" href="https://wa.me/972500000000"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5C21 16.1944 17.1944 20 12.5 20C11.0779 20 9.74381 19.5988 8.59609 18.9069L2.5 20L3.64356 14.2371C2.85357 12.9818 2.5 11.5497 2.5 10C2.5 5.30558 6.30558 1.5 11 1.5C15.6944 1.5 19.5 5.30558 19.5 10C19.5 14.6944 15.6944 18.5 11 18.5" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M8 8L10.5 10.5M15.5 10.5L18 8M15.5 13.5L18 16" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg>שלח וואטסאפ</a><a class="flex items-center justify-center gap-3 border-2 border-[#F5F5F5] text-[#F5F5F5] px-6 py-4 rounded-lg font-bold text-xl hover:bg-[#F5F5F5] hover:text-[#1A1A1A] transition-all" href="mailto:info@hashmalay.co.il"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#FFD700" stroke-width="2"></rect><path d="M2 6L12 13L22 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg>שלח אימייל</a></div></div><div><div class="mb-4 flex items-center gap-2"><svg class="w-6 h-6 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg><h3 class="text-2xl font-black text-[#FFD700]">המיקום שלנו</h3></div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54078.85284906636!2d34.77553!3d32.0853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4ca7593e8555%3A0x7d8f2d8f8f8f8f8f!2sTel%20Aviv-Yafo%2C%20Israel!5e0!3m2!1sen!2sil!4v1234567890" width="100%" height="400" style="border:0;border-radius:12px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="מיקום חשמלאי"></iframe><div class="flex flex-col sm:flex-row gap-4 mt-4"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Tel+Aviv-Yafo,+Israel" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-3 rounded-lg font-bold hover:bg-[#00BFFF] hover:text-white transition-all"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 14H9L10 22L20 10H15L12 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg>נווט אלינו ב-Google Maps</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Tel+Aviv-Yafo,+Israel" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 bg-[#1A1A1A] text-[#FFD700] border-2 border-[#FFD700] px-4 py-3 rounded-lg font-bold hover:bg-[#FFD700] hover:text-[#1A1A1A] transition-all"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg>הצג במפה המלאה</a></div><p class="text-[#F5F5F5] font-bold text-center mt-4">אזור שירות: תל אביב, רמת גן, הרצליה, פתח תקווה וכל המרכז</p></div></div></div></section><a href="https://wa.me/972500000000" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 left-6 z-50 flex items-center gap-3 bg-[#25D366] text-white px-5 py-3 rounded-full shadow-lg shadow-[#25D366]/30 hover:scale-105 transition-transform"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5C21 16.1944 17.1944 20 12.5 20C11.0779 20 9.74381 19.5988 8.59609 18.9069L2.5 20L3.64356 14.2371C2.85357 12.9818 2.5 11.5497 2.5 10C2.5 5.30558 6.30558 1.5 11 1.5C15.6944 1.5 19.5 5.30558 19.5 10C19.5 14.6944 15.6944 18.5 11 18.5" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M8 8L10.5 10.5M15.5 10.5L18 8M15.5 13.5L18 16" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><span class="font-bold hidden sm:inline">שלח הודעה</span></a><a href="tel:0500000000" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#FFD700] text-[#1A1A1A] px-5 py-3 rounded-full shadow-lg shadow-[#FFD700]/30 hover:scale-105 transition-transform pulse-animation"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg><span class="font-bold hidden sm:inline">התקשר עכשיו</span></a></div></main><footer class="bg-[#1A1A1A] border-t border-[#FFD700]/20"><div class="container py-16"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><div><a class="flex items-center gap-2 mb-4" href="/" data-discover="true"><svg class="w-10 h-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L6 18H16L14 30L26 14H16L18 2Z" fill="#FFD700" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path></svg><span class="text-2xl font-black text-[#F5F5F5]">חשמלאי</span></a><p class="text-[#F5F5F5]/70 font-bold text-sm mb-6 leading-relaxed">שירות חשמל מקצועי ואמין לבית ולעסק. זמינים 24/7 עם מגיעים תוך 30 דקות לכל תקלה.</p><div class="space-y-2"><div class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5]/80 font-bold">רישיון ממשלתי</span></div><div class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5]/80 font-bold">מבוטח במלואו</span></div><div class="flex items-center gap-2 text-sm"><svg class="w-4 h-4 text-[#FFD700]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" stroke="#FFD700" stroke-width="2" stroke-linejoin="round"></path><path d="M9 12L11 14L15 10" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="text-[#F5F5F5]/80 font-bold">אחריות על כל עבודה</span></div></div></div><div><h3 class="text-xl font-black text-[#FFD700] mb-4">שירותים</h3><ul class="space-y-2"><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">תיקון תקלות חשמל</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">התקנת לוח חשמל</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">התקנת תאורה</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">מערכות סולאריות</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">בדיקות חשמל</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">חשמלאי חירום</a></li></ul></div><div><h3 class="text-xl font-black text-[#FFD700] mb-4">קישורים מהירים</h3><ul class="space-y-2"><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/" data-discover="true">בית</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/שירותים" data-discover="true">שירותים</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/פרויקטים" data-discover="true">פרויקטים</a></li><li><a class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors" href="/צור-קשר" data-discover="true">צור קשר</a></li></ul><div class="flex gap-4 mt-6"><a href="#" class="w-10 h-10 rounded-full bg-[#2D2D2D] flex items-center justify-center text-[#F5F5F5] hover:bg-[#FFD700] hover:text-[#1A1A1A] transition-all" aria-label="פייסבוק"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="#" class="w-10 h-10 rounded-full bg-[#2D2D2D] flex items-center justify-center text-[#F5F5F5] hover:bg-[#FFD700] hover:text-[#1A1A1A] transition-all" aria-label="אינסטגרם"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"></circle><circle cx="18" cy="6" r="1" fill="currentColor"></circle></svg></a><a href="https://wa.me/972500000000" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#2D2D2D] flex items-center justify-center text-[#F5F5F5] hover:bg-[#25D366] hover:text-white transition-all" aria-label="וואטסאפ"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5C21 16.1944 17.1944 20 12.5 20C11.0779 20 9.74381 19.5988 8.59609 18.9069L2.5 20L3.64356 14.2371C2.85357 12.9818 2.5 11.5497 2.5 10C2.5 5.30558 6.30558 1.5 11 1.5C15.6944 1.5 19.5 5.30558 19.5 10C19.5 14.6944 15.6944 18.5 11 18.5" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path><path d="M8 8L10.5 10.5M15.5 10.5L18 8M15.5 13.5L18 16" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg></a></div></div><div><h3 class="text-xl font-black text-[#FFD700] mb-4">צור קשר</h3><div class="space-y-4"><div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V19.92C22 20.48 21.5 20.98 20.94 20.99C10.05 21.02 0.98 11.95 1.01 1.06C1.01 0.5 1.51 0 2.07 0H5.07C5.57 0 6.02 0.37 6.12 0.87L7.62 7.91C7.73 8.47 7.43 9.04 6.94 9.33L4.17 11C6.08 15.27 9.73 18.92 14 20.83L16.67 18.06C16.96 17.57 17.53 17.27 18.09 17.38L25.13 18.88C25.63 18.98 26 19.43 26 19.93V16.92C26 16.42 25.62 15.97 25.13 15.87L22 16.92Z" fill="#FFD700"></path></svg><div><a href="tel:0500000000" class="text-[#F5F5F5] font-bold hover:text-[#FFD700] transition-colors">050-000-0000</a></div></div><div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#FFD700" stroke-width="2"></rect><path d="M2 6L12 13L22 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><a href="mailto:info@hashmalay.co.il" class="text-[#F5F5F5]/80 font-bold text-sm hover:text-[#FFD700] transition-colors">info@hashmalay.co.il</a></div><div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8C6 12.5 12 20 12 20C12 20 18 12.5 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#FFD700" stroke-width="2"></path><circle cx="12" cy="8" r="2" stroke="#FFD700" stroke-width="2"></circle></svg><span class="text-[#F5F5F5]/80 font-bold text-sm">תל אביב והמרכז</span></div><div class="flex items-start gap-3"><svg class="w-5 h-5 mt-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#FFD700" stroke-width="2"></circle><path d="M12 6V12L16 14" stroke="#FFD700" stroke-width="2" stroke-linecap="round"></path></svg><span class="text-[#F5F5F5]/80 font-bold text-sm">זמינים 24/7 כולל שבתות וחגים</span></div></div><a class="mt-6 flex items-center justify-center gap-2 bg-[#FFD700] text-[#1A1A1A] px-4 py-3 rounded-lg font-bold hover:bg-[#00BFFF] hover:text-white transition-all w-full" href="/צור-קשר" data-discover="true">צור קשר עכשיו</a></div></div><div class="mt-12 pt-8 border-t border-[#2D2D2D]"><h4 class="text-lg font-black text-[#FFD700] mb-4 text-center">אזורי שירות</h4><div class="flex flex-wrap justify-center gap-3"><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">תל אביב</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">רמת גן</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">הרצליה</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">פתח תקווה</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">ראשון לציון</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">חולון</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">בת ים</span><span class="bg-[#2D2D2D] text-[#F5F5F5] px-3 py-1 rounded-full text-sm font-bold">ראש העין</span></div></div></div><div class="bg-[#2D2D2D] py-4"><div class="container"><div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center"><p class="text-[#F5F5F5]/60 font-bold text-sm">© <!-- -->2026<!-- --> חשמלאי - כל הזכויות שמורות</p><p class="text-[#F5F5F5]/60 font-bold text-sm">שירות חשמל מקצועי 24/7 | תל אביב והמרכז</p></div></div></div></footer></div><div class="ls-preview-banner">This is a preview. Publish your website to make it live on your own domain.</div><script>((storageKey2, restoreKey) => {
+		if (!window.history.state || !window.history.state.key) {
+			let key = Math.random().toString(32).slice(2);
+			window.history.replaceState({ key }, "");
+		}
+		try {
+			let storedY = JSON.parse(sessionStorage.getItem(storageKey2) || "{}")[restoreKey || window.history.state.key];
+			if (typeof storedY === "number") window.scrollTo(0, storedY);
+		} catch (error) {
+			console.error(error);
+			sessionStorage.removeItem(storageKey2);
+		}
+	})("react-router-scroll-positions", null)</script><!--$--><script>window.__reactRouterContext.streamController.enqueue("[{\"_1\":2,\"_3\":-5,\"_4\":-5},\"loaderData\",{},\"actionData\",\"errors\"]\n");</script><!--$--><script>window.__reactRouterContext.streamController.close();</script><!--/$--><!--/$--><script id="_R_">requestAnimationFrame(function(){$RT=performance.now()});</script><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d||"/&"===d)if(0===h)break;else h--;else"$"!==d&&"$?"!==d&&"$~"!==d&&"$!"!==d&&"&"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data="$";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};
+$RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))?(a.previousSibling.data="$~",$RB.push(a,b),2===$RB.length&&("number"!==typeof $RT?requestAnimationFrame($RV.bind(null,$RB)):(a=performance.now(),setTimeout($RV.bind(null,$RB),2300>a&&2E3<a?2300-a:$RT+300-a)))):b.parentNode.removeChild(b)};$RC("B:0","S:0")</script><script>$RC("B:1","S:1")</script><script type="module" src="./@vite/client"></script></body></html>
